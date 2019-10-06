@@ -1,4 +1,4 @@
-shiny::shinyServer(function(input, output) {
+server <- function(input, output) {
   
   shiny::observeEvent(input$button_mun, {
     
@@ -18,4 +18,4 @@ shiny::shinyServer(function(input, output) {
       
     }) 
   }) 
-})
+}

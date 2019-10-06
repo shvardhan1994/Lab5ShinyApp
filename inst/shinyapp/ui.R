@@ -6,7 +6,7 @@ colnames(get_data_s) <- c(get_data_s[1,])
 get_data_s <- get_data_s[-1,]
 colnames(get_data_s) <- c("LAN","KOM","County","Municipality","M","MPER","C","CPER","FP","FPPER","KD","KDPER","S","SPER","V","VPER","MP","MPPER","SD","SDPER","FI","FPPER","OVR","OVRPER","BL","BLPER","OGPER","OG")
 
-shiny::shinyUI(bootstrapPage(
+ui <- shiny::fluidPage(
   
   shiny::titlePanel("Comprehensive statistics on the 2014 election in Sweden"),
   shiny::sidebarLayout(
@@ -27,4 +27,4 @@ shiny::shinyUI(bootstrapPage(
                      shiny::plotOutput("p2"))
   )
   
-))
+)
