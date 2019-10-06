@@ -1,24 +1,3 @@
-#' This function loads data from API and performs functionality based on the data.
-#' @description In this package, we connect to a web API and fetch data from API, a functionality is created where in user inputs Municipality Name and  party wise vote distribution is plotted. The same functionality is called in shiny app making it a reactive input output program.
-#' @param Municipality_name Takes this as argument and party wise vote distribution is plotted.
-#' @import ggplot2
-#' @examples
-#' \dontrun{ 
-#' PartyVoteShare(Municipality_name = "Karlshamn")
-#' }
-#' @return Returns the plot with party wise vote distribution of the municipality user entered.
-#' @export 
-
-
-
-
-#library(httr)
-#library(ggplot2)
-#library(shiny)
-#library(readxl)
-
-
-#function to plot results based on Municipality Name
 
 MunicipalityResults <- function(Municipality_name){
   url <- "https://data.val.se/val/val2014/statistik/2014_riksdagsval_per_kommun.xls"
@@ -45,10 +24,10 @@ MunicipalityResults <- function(Municipality_name){
     PartyNames <- vector()
     TotalVotes <- vector()
     fun1_df <- data.frame(PartyNames = x_axis, TotalVotes = y_axis  )
-    p<-ggplot2::ggplot(data=fun1_df, aes(x=PartyNames, y=TotalVotes, fill=partynames)) +
-      geom_bar(stat="identity") + 
-      geom_text(aes(label=TotalVotes), vjust=1.6, color="black", size=3.5) + 
-      theme_minimal() + labs(title = "Municipality Result")
+    p<-ggplot2::ggplot(data=fun1_df, ggplot2::aes(x=PartyNames, y=TotalVotes, fill=partynames)) +
+      ggplot2::geom_bar(stat="identity") + 
+      ggplot2::geom_text(aes(label=TotalVotes), vjust=1.6, color="black", size=3.5) + 
+      ggplot2::theme_minimal() + ggplot2::labs(title = "Municipality Result")
     return(p)
   } else stop("Input arguments are not character type : Check your Input")
 }
